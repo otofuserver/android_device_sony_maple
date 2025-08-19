@@ -5,7 +5,7 @@ Description
 -----------
 
 This repository is for LineageOS 22.1 on Sony Xperia XZ Premium (maple).
-
+(docomo SO-04J)
 How to build LineageOS
 ----------------------
 
