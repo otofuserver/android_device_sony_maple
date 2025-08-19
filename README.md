@@ -4,9 +4,9 @@ Device configuration for Sony Xperia XZ Premium (maple)
 Description
 -----------
 
-This repository is for LineageOS 22.1 on Sony Xperia XZ Premium (maple).
-(docomo SO-04J)
-How to build LineageOS
+This repository is for LineageOS 22.1 on Sony Xperia XZ Premium (maple).  
+(docomo SO-04J)  
+How to build LineageOS  
 ----------------------
 
 * Make a workspace:
