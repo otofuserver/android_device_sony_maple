@@ -1,0 +1,35 @@
+# hal_sensors_default が /persist を参照できるように
+allow hal_sensors_default persist_file:dir search;
+allow hal_sensors_default persist_file:file { read open getattr };
+
+# hal_sensors_default が /dev/diag にアクセスできるように
+allow hal_sensors_default diag_device:chr_file { read write open ioctl };
+
+# sensors デーモン (vendor.sensors.qti) 用
+allow sensors persist_file:dir search;
+allow sensors persist_file:file { read open getattr };
+allow sensors diag_device:chr_file { read write open ioctl };
+
+# 実行バイナリ用のファイルタイプを定義
+type hal_sensors_exec, exec_type, file_type, vendor_file_type;
+
+# sensors.qti が binder や IPC 用にポートバインドできるようにする
+allow hal_sensors_default self:capability net_bind_service;
+
+# linkerconfig に sys_admin capability を許可
+allow linkerconfig self:capability sys_admin;
+
+# vendor_boringssl_self_test に sys_admin capability を許可
+allow vendor_boringssl_self_test self:capability sys_admin;
+
+# fsck に sys_admin capability を許可
+allow fsck self:capability sys_admin;
+
+# tftp_server が /persist にアクセスできるよう search を許可
+allow rfs_access persist_file:dir search;
+
+# diag デバイスアクセス許可
+allow qti diag_device:chr_file { read write };
+allow ims diag_device:chr_file { read write };
+allow netmgrd diag_device:chr_file { read write };
+allow dpmd diag_device:chr_file { read write };

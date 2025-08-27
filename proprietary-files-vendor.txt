@@ -277,17 +277,17 @@ vendor/lib64/libOmxWmaDec.so
 vendor/lib64/libvpplibrary.so
 
 # NFC
-vendor/etc/libnfc-nci.conf
-vendor/etc/libnfc-nxp-octopus.conf
-vendor/etc/libnfc-nxp.conf
-vendor/lib/libpn553_fw.so
-
 #vendor/etc/libnfc-nci.conf
-#vendor/etc/libnfc-cxd-224x02010010.conf
-#vendor/etc/libnfc-cxd-224x02310011.conf
-#vendor/etc/nfc_settings.conf
-#vendor/firmware/cxd224x_firmware_ES1.1.bin
-#vendor/firmware/cxd224x_firmware_ES1.0.bin
+#vendor/etc/libnfc-nxp-octopus.conf
+#vendor/etc/libnfc-nxp.conf
+#vendor/lib/libpn553_fw.so
+
+vendor/etc/libnfc-nci.conf
+vendor/etc/libnfc-cxd-224x02010010.conf
+vendor/etc/libnfc-cxd-224x02310011.conf
+vendor/etc/nfc_settings.conf
+vendor/firmware/cxd224x_firmware_ES1.1.bin
+vendor/firmware/cxd224x_firmware_ES1.0.bin
 
 # QMI
 vendor/bin/mlog_qmi_service
@@ -344,6 +344,7 @@ vendor/lib64/libsns_low_lat_stream_stub.so
 vendor/lib64/sensor_calibrate.so
 vendor/lib64/sensors.finger-pickup.so
 vendor/lib64/sensors.ssc.so
+vendor/etc/init/sensors.qti.rc
 
 # TA_QMI
 vendor/bin/ta_qmi_service

@@ -44,7 +44,7 @@ BOARD_VENDORIMAGE_PARTITION_SIZE := 419430400
 TARGET_SCREEN_DENSITY := 410
 
 ### SEPOLICY
-#BOARD_VENDOR_SEPOLICY_DIRS += device/sony/maple/sepolicy/vendor
+BOARD_VENDOR_SEPOLICY_DIRS += device/sony/maple/sepolicy/vendor
 
 ### PROPS
 # Add device-specific ones
