@@ -22,3 +22,7 @@ DEVICE_PACKAGE_OVERLAYS += \
     $(DEVICE_PATH)/overlay
 
 include $(DEVICE_PATH)/device/*.mk
+
+# Disable AOSP sensors HAL service rc (we use sensors.qti instead)
+PRODUCT_COPY_FILES +=
+    $(DEVICE_PATH)/config/android.hardware.sensors@1.0-service.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/android.hardware.sensors@1.0-service.rc
