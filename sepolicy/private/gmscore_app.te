@@ -1,0 +1,3 @@
+# system_adbd_prop ファイルの read を許可
+allow gmscore_app system_adbd_prop:file read;
+
