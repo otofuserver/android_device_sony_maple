@@ -1,8 +1,16 @@
-service vendor.sensors-hal-1-0 /vendor/bin/sensors.qti
+# HIDL ISensors 実体（hwservicemanager に登録される）
+service vendor.sensors-hal-1-0 /vendor/bin/hw/android.hardware.sensors@1.0-service
     interface android.hardware.sensors@1.0::ISensors default
     class hal
     user system
-    group system input wakelock uhid context_hub
+    group system wakelock uhid context_hub
+    capabilities BLOCK_SUSPEND
+    rlimit rtprio 10 10
+
+# QTI の裏方デーモン（SLPI/SSC と会話する）
+service vendor.sensors.qti /vendor/bin/sensors.qti
+    class hal
+    user system
+    group system input wakelock
     capabilities BLOCK_SUSPEND NET_ADMIN NET_RAW
     seclabel u:r:hal_sensors_default:s0
-    rlimit rtprio 10 10
