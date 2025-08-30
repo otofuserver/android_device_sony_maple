@@ -1,5 +1,4 @@
 /vendor/bin/sensors.qti         u:object_r:hal_sensors_default_exec:s0
-/vendor/etc/init/sensors.qti.rc u:object_r:vendor_configs_file:s0
 # NFC
 /dev/bd7602-i2c       u:object_r:nfc_device:s0
 /dev/cxd224x-i2c      u:object_r:nfc_device:s0

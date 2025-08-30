@@ -344,7 +344,6 @@ vendor/lib64/libsns_low_lat_stream_stub.so
 vendor/lib64/sensor_calibrate.so
 vendor/lib64/sensors.finger-pickup.so
 vendor/lib64/sensors.ssc.so
-vendor/etc/init/sensors.qti.rc
 
 # TA_QMI
 vendor/bin/ta_qmi_service

@@ -17,10 +17,10 @@ type hal_sensors_exec, exec_type, file_type, vendor_file_type;
 allow hal_sensors_default self:capability net_bind_service;
 
 # linkerconfig に sys_admin capability を許可
-allow linkerconfig self:capability sys_admin;
+#allow linkerconfig self:capability sys_admin;
 
 # vendor_boringssl_self_test に sys_admin capability を許可
-allow vendor_boringssl_self_test self:capability sys_admin;
+#allow vendor_boringssl_self_test self:capability sys_admin;
 
 # fsck に sys_admin capability を許可
 allow fsck self:capability sys_admin;
@@ -32,4 +32,15 @@ allow rfs_access persist_file:dir search;
 allow qti diag_device:chr_file { read write };
 allow ims diag_device:chr_file { read write };
 allow netmgrd diag_device:chr_file { read write };
-allow dpmd diag_device:chr_file { read write };
+
+# /dev/sensors デバイスノードへのアクセス
+allow hal_sensors_default sensors_device:chr_file { read write open ioctl };
+
+# semc_version_prop の読み取り
+allow hal_sensors_default semc_version_prop:file { read open getattr };
+
+# tad_socket への接続
+allow hal_sensors_default tad_socket:sock_file { read write open getattr };
+
+# bind/connect は unix_stream_socket に対して許可
+allow hal_sensors_default tad_socket:unix_stream_socket { connectto };
