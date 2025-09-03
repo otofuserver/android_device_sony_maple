@@ -1,3 +1,6 @@
+# 必要な型のみ定義（重複しないもの）
+type sysfs_ssc, sysfs_type, fs_type;
+
 # hal_sensors_default が /persist を参照できるように
 allow hal_sensors_default persist_file:dir search;
 allow hal_sensors_default persist_file:file { read open getattr };
@@ -10,13 +13,14 @@ allow sensors persist_file:dir search;
 allow sensors persist_file:file { read open getattr };
 allow sensors diag_device:chr_file { read write open ioctl };
 
-# 実行バイナリ用のファイルタイプを定義
-type hal_sensors_exec, exec_type, file_type, vendor_file_type;
+# init からの hal_sensors_default ドメインへの遷移許可
+allow init hal_sensors_default:process { transition };
+allow init sensors:process { transition };
 
 # sensors.qti が binder や IPC 用にポートバインドできるようにする
 allow hal_sensors_default self:capability net_bind_service;
 
-# linkerconfig に sys_admin capability を許可
+# linkerconfig に sys_admin capability ���許可
 #allow linkerconfig self:capability sys_admin;
 
 # vendor_boringssl_self_test に sys_admin capability を許可
@@ -44,3 +48,20 @@ allow hal_sensors_default tad_socket:sock_file { read write open getattr };
 
 # bind/connect は unix_stream_socket に対して許可
 allow hal_sensors_default tad_socket:unix_stream_socket { connectto };
+
+# hwbinder による通信許可
+allow hal_sensors_default hwservicemanager:binder { call transfer };
+allow hal_sensors_default system_server:binder { call transfer };
+
+# プロパティアクセス（既存の型を使用）
+get_prop(hal_sensors_default, vendor_sensors_prop)
+set_prop(hal_sensors_default, vendor_sensors_prop)
+
+# SLPI/SSC との通信用
+allow hal_sensors_default sysfs_sensors:dir search;
+allow hal_sensors_default sysfs_sensors:file { read write };
+allow hal_sensors_default sysfs_ssc:dir search;
+allow hal_sensors_default sysfs_ssc:file { read write open };
+
+# 実行に必要な基本権限
+allow hal_sensors_default self:process { execmem };
